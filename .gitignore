@@ -1,0 +1,77 @@
+# --- Python related ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.env
+.venv
+.env/
+.venv/
+.ipynb_checkpoints/
+
+# --- Temporary / cache files ---
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+# --- Jupyter / IDE ---
+.vscode/
+.idea/
+.history/
+*.ipynb_checkpoints/
+*.code-workspace
+
+# --- Data and model outputs ---
+*.h5
+*.hdf5
+*.pkl
+*.slcio
+*.npz
+*.npy
+*.csv
+*.parquet
+*.pt
+*.ckpt
+*.onnx
+*.pth
+*.tar
+*.zip
+
+# --- Large dataset folders ---
+data/
+datasets/
+outputs/
+logs/
+runs/
+checkpoints/
+
+# --- Build and binary files ---
+build/
+dist/
+*.out
+*.o
+*.a
+*.exe
+*.bin
+
+# --- Other ---
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# --- Dataset files ---
+dataset/*
+calo_configs/par04/*
+output_dataset/
+log/
+
+# --- Docs: keep internal notes + analysis notebooks out of the public repo ---
+docs/cell_level_feasibility.md
+docs/*.ipynb
+# Internal cluster ops scripts (kept local, not part of the public pipeline)
+internal/

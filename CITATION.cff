@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "Multi-Calorimeter Dataset"
+message: "If you use this dataset or code, please cite it and the associated papers."
+type: software
+authors:
+  - family-names: Valente
+    given-names: Lorenzo
+    affiliation: "Universität Hamburg"
+repository-code: "https://github.com/FLC-QU-hep/multi-calorimeter-dataset"
+license: MIT
+references:
+  - type: article
+    title: "Transferable Fast Calorimeter Shower Generation via Multi-Geometry Pre-training"
+    year: 2026
+    notes: "The paper this repository accompanies."
+    url: "https://arxiv.org/abs/2608.18233"
+    identifiers:
+      - type: other
+        value: "arXiv:2608.18233"
+        description: "arXiv preprint identifier"
+    authors:
+      - family-names: Buss
+        given-names: Thorsten
+      - family-names: Day-Hall
+        given-names: Henry
+      - family-names: Gaede
+        given-names: Frank
+      - family-names: Kasieczka
+        given-names: Gregor
+      - family-names: Krüger
+        given-names: Katja
+      - family-names: McKeown
+        given-names: Peter
+      - family-names: Valente
+        given-names: Lorenzo
+doi: 10.25592/uhhfdm.19103

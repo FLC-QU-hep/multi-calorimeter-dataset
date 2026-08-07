@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd xmlns:compact="http://www.lcsim.org/schemas/compact/1.0"
+       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+       xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/compact/1.0/compact.xsd">
+
+  <info name="Par04"
+        title="Template for reproduction of Par04 detector"
+        author="A.Zaborowska"
+        url="no"
+        status="development"
+        version="1.0">
+    <comment>
+      Common settings for a reproduction of Geant4 examples/extended/parameterisation/Par04 detector.
+      Definition of sizes, visualization settings and readout are specified.
+    </comment>
+  </info>
+
+  <includes>
+    <gdmlFile  ref="$elements_path"/>
+    <gdmlFile  ref="$materials_path"/>
+  </includes>
+
+  <define>
+    <constant name="world_size" value="5*m"/>
+    <constant name="world_x" value="world_size"/>
+    <constant name="world_y" value="world_size"/>
+    <constant name="world_z" value="world_size"/>
+    <!-- layer dimensions -->
+    <constant name="EMBarrel_numLayers" value="$num_layers"/>
+    <constant name="EMBarrel_activeThickness" value="$active_thickness*mm"/>
+    <constant name="EMBarrel_passiveThickness" value="$passive_thickness*mm"/>
+    <constant name="EMBarrel_layerThickness" value="EMBarrel_activeThickness+EMBarrel_passiveThickness"/>
+    <constant name="sampling_fraction" value="$sampling_fraction"/> 
+    <!-- calorimeter volume -->
+    <constant name="EMBarrel_rmin" value="80*cm"/>
+    <constant name="EMBarrel_rmax" value="EMBarrel_rmin+EMBarrel_numLayers*EMBarrel_layerThickness"/>
+    <constant name="EMBarrel_dz" value="2*m"/>
+  </define>
+
+  <display>
+    <vis name="ecal_envelope" r="0.1" g="0.2" b="0.6" alpha="1" showDaughers="false" visible="true" />
+  </display>
+  <regions>
+    <region name="preECalBarrelRegion" eunit="MeV" lunit="mm" cut="0.001" threshold="0.001"/>
+  </regions>
+
+  <readouts>
+    <readout name="ECalBarrelCollection">
+      <!-- using only non-negative identifiers -->
+      <segmentation type="GridPhiEta" grid_size_eta="0.05" offset_eta="-3" phi_bins="128"/>
+      <id>system:4,layer:7,slice:2,phi:-10,eta:16</id>
+    </readout>
+  </readouts>
+
+  <detectors>
+      <detector name="preECalBarrel" type="SingleCylinder" region="preECalBarrelRegion">
+        <dimensions rmin="EMBarrel_rmin - 0.02*mm" rmax="EMBarrel_rmin - 0.01*mm" dz="EMBarrel_dz" phi0="0" deltaphi="360*deg" z_offset="0*cm" material="Air"/>
+    </detector>
+
+    <detector id="1" name="EMCalBarrel" type="SandwichCylinders" readout="ECalBarrelCollection">
+      <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
+      <sensitive type="CalorimeterSD"/>
+      <dimensions rmin="EMBarrel_rmin" rmax="EMBarrel_rmax" dz="EMBarrel_dz" vis="ecal_envelope"/>
+      <layer repeat="EMBarrel_numLayers">
+        <slice material = "W" thickness = "EMBarrel_passiveThickness" sensitive="no"/>
+        <slice material = "Si" thickness = "EMBarrel_activeThickness" sensitive="yes"/>
+      </layer>
+    </detector>
+  </detectors>
+
+</lccdd>

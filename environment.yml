@@ -1,0 +1,18 @@
+# Conda environment for the processing / analysis stage (ROOT->HDF5, merge, plots).
+# The Geant4 SIMULATION stage uses a separate key4hep stack (see README / run/build.sh),
+# not this env.  Create with:  conda env create -f environment.yml
+name: calo-transfer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - h5py
+  - uproot
+  - awkward
+  - matplotlib
+  - scikit-learn
+  - tqdm
+# Versions are unpinned for portability; pin to the paper's env with
+#   conda env export --no-builds > environment.lock.yml

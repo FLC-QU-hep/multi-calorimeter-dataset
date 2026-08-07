@@ -1,0 +1,28 @@
+# Python dependencies for the multi-calorimeter-dataset processing/analysis code.
+# Install with:  pip install -r requirements.txt
+#
+# Versions are left unpinned for portability; pin them to your environment with
+#   pip freeze | grep -iE 'numpy|scipy|h5py|uproot|awkward|matplotlib|tqdm|scikit-learn|joblib|torch'
+# for strict reproducibility.
+
+numpy
+scipy
+h5py
+uproot
+awkward
+matplotlib
+tqdm
+scikit-learn
+
+# Optional — only needed for the ML/fit utilities (not required to build datasets):
+#
+# showerdata — training-ready format conversion (utils/showerdata_utils.py):
+#   pip install git+https://github.com/FLC-QU-hep/ShowerData
+
+# ---------------------------------------------------------------------------
+# NOT installable via pip — provided by the Geant4 / key4hep / DD4hep stack
+# (source the appropriate key4hep environment before running the simulation):
+#   Geant4, DD4hep (DDSim, DDG4), pyLCIO, g4units, cppyy
+# See LEMURS.md for the exact key4hep-stack version and simulation setup.
+# locations used to generate the datasets.
+# ---------------------------------------------------------------------------
